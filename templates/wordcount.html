@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+	<title>数据分析</title>
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" />
+	<meta name="keywords" content="" />
+           <style type="text/css">
+        html {
+            font-family: sans-serif;
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            margin: 200px;
+        }
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        td,th {
+            padding: 0;
+            text-align: center;
+        }
+
+        .table-bordered {
+            width: 600px;
+            border-collapse: collapse;
+            border-spacing: 0;
+            empty-cells: show;
+            border: 1px solid #cbcbcb;
+        }
+
+        .table-bordered caption {
+            color: #000;
+            font: italic 85%/1 arial,sans-serif;
+            padding: 1em 0;
+            text-align: center;
+        }
+
+        .table-bordered td,.table table-bordered th {
+            border-left: 1px solid #cbcbcb;
+            border-width: 0 0 0 1px;
+            font-size: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: .5em 1em;
+        }
+
+        .table-bordered thead {
+            background-color: #e0e0e0;
+            color: #000;
+            text-align: left;
+            vertical-align: bottom;
+        }
+
+        .table-bordered td {
+            background-color: transparent;
+            /*width: 50px;*/
+        }
+
+        .table .thead-bule th{
+            color: #00FF00;
+        }
+    </style>
+    <style>
+        .content{
+            padding: 0;
+            margin: 100px 500px 100px;
+            {#left: 800px;#}
+            {#float: ;#}
+        }
+    </style>
+    <style>
+        .content{
+            text-align: center;
+        }
+    </style>
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href={{ url_for('static',filename='css/bootstrap.css') }} >
+    <link rel="stylesheet" href={{ url_for('static',filename='css/bootstrap-table.css') }} >
+    <link rel="stylesheet" href={{ url_for('static',filename='css/style.css') }} type="text/css" media="all">
+    <link rel="stylesheet" href={{ url_for('static',filename='css/font-awesome.min.css') }} >
+
+	<link href="http://fonts.googleapis.com/css?family=Source+Code+Pro:200,300,400,500,600,700,900&amp;subset=latin-ext" rel="stylesheet">
+
+</head>
+<script type="text/javascript" src="../static/js/1.js"></script>
+<script type="text/javascript" src="../static/js/bootstrap-table.js"></script>
+<script type="text/javascript" src="../static/js/bootstrap-table-zh-CN.js"></script>
+<body>
+	<!-- header -->
+	<header>
+		<div class="logo ml-sm-4 ml-2 mt-3">
+			<a href="/"><span class="fa fa-stumbleupon"></span></a>
+		</div>
+		<!-- menu -->
+		<ul id="menu">
+			<li>
+				<input id="check02" type="checkbox" name="menu" />
+				<label for="check02"><span class="fa fa-bars" aria-hidden="true"></span></label>
+				<ul class="submenu">
+                    <li><a href="/getting">数据获取</a></li>
+					<li><a href="/show">数据展示</a></li>
+                    <li><a href="/wordcount">数据分析</a></li>
+				</ul>
+			</li>
+		</ul>
+		<!-- //menu -->
+	</header>
+	<!-- //header -->
+
+	<!-- team -->
+	<div class="team he-codes">
+		<!-- team content -->
+		<div class="team-cont text-center pt-5 pb-xl-4 pb-3">
+			<h3 class="title text-center text-wh font-weight-bold">数据分析</h3>
+		</div>
+		<!-- //team content -->
+
+
+        <div style="text-align: center;width: 500px;position: absolute;left: 530px">
+        <table style="text-align: center;" aclass="table-bordered" id="table_page"
+        data-pagination="true"
+        data-side-pagination="client"
+        data-page-size="10">
+            {% for data in Data %}
+            <tr>
+                <th>{{ data.0 }}</th>
+                <th>{{ data.1 }}</th>
+            </tr>
+            {% endfor %}
+        </table>
+        </div>
+
+
+	</div>
+	<!-- //team -->
+
+</body>
+<script style="color: wheat" >
+
+        $(document).ready(function() {
+        $("#table_page").bootstrapTable({
+            theadClasses: "thead-blue",
+            classes:"table table-bordered table-striped table-sm table-dark",
+        columns: [{
+            field: '关键词',
+            title: '关键词'
+        },{
+            field: '出现次数',
+            title: "出现次数"
+        }]
+    });
+    });
+</script>
+</html>
